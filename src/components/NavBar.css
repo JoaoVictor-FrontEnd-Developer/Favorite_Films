@@ -1,0 +1,32 @@
+.nav-link{
+    position: relative;
+}
+
+.navbar-toggler{
+    position: relative;
+}
+
+.nav-link>span,
+.navbar-toggler>.span-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -15px;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    position: absolute;
+    font-weight: bold;
+    background-color: rgb(0, 132, 255);
+    border-radius: 50%;
+    color: #fff;
+    
+}
+
+.nav-link>span{
+    top: 0;
+}
+
+.navbar-toggler>.span-mobile{
+    top: -10px;
+}
