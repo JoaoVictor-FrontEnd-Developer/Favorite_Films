@@ -1,15 +1,20 @@
-import { useContext, useState, useEffect } from "react";
-import { ContextTeste } from "../context/context";
 import React from "react";
+import { useEffect, useState, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
+import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
 
-function Home() {
+function Search() {
   const [contextState, dispatch] = useContext(ContextTeste);
   const [filmes, setFilmes] = useState([]);
 
+  const [searchParams] = useSearchParams();
+    const query = searchParams.get("q");
+    
+
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=87b7a9ceed5e2787d289232560b21c76"
+      `https://api.themoviedb.org/3/search/movie?api_key=87b7a9ceed5e2787d289232560b21c76&query=${query}`
     )
       .then(async (resp) => {
         const response = await resp.json();
@@ -18,12 +23,11 @@ function Home() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [query]);
 
   return (
     <div className="container">
-      <h1 className="py-3">Top Filmes</h1>
-
+          <h1 className="py-3">Resultados para: <span className="text-primary">{query}</span></h1>
       <div className="my-2 row g-3">
         {filmes.length > 0 ? (
           filmes.map((filme) => (
@@ -37,15 +41,13 @@ function Home() {
             />
           ))
         ) : (
-          <div className="d-flex justify-content-center">
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+            <div className="container text-center py-3">
+            <h4>Filme não encontrado</h4>
             </div>
-          </div>
         )}
       </div>
     </div>
   );
 }
 
-export default Home;
+export default Search;

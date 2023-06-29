@@ -7,7 +7,7 @@ function CardFilm({ id, title, poster, nota, filme }) {
 
   const [contextState, dispatch] = useContext(ContextTeste);
   
-
+  
   return (
           <div className="col-xl-3 col-lg-4 col-md-6 col-6" key={id}>
             <div className="card ">
@@ -19,7 +19,7 @@ function CardFilm({ id, title, poster, nota, filme }) {
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text d-flex align-items-center">
-                  <BsStarFill className="text-warning me-2"/>{nota}
+                  <BsStarFill className="text-warning me-2"/>{nota.toFixed(1)}
                 </p>
                 <button onClick={() => { dispatch({ type: "FAVORITE", payload: filme }) }}
                   className={`btn ${contextState.id.includes(id) ? 'btn-danger': 'btn-primary'}`}>
