@@ -1,10 +1,9 @@
-import { useContext, useState, useEffect } from "react";
-import { ContextTeste } from "../context/context";
+import { useState, useEffect } from "react";
 import React from "react";
 import CardFilm from "../components/CardFilm";
 
 function Home() {
-  const [contextState, dispatch] = useContext(ContextTeste);
+  
   const [filmes, setFilmes] = useState([]);
 
   useEffect(() => {

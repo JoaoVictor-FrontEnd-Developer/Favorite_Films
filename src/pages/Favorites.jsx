@@ -4,7 +4,7 @@ import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
 
 function Favorites() {
-  const [contextState, dispatch] = useContext(ContextTeste);
+  const [contextState] = useContext(ContextTeste);
 
   return (
     <>

@@ -7,8 +7,10 @@ import { BsStarFill, BsFillCalendarFill } from "react-icons/bs";
 function MoviePage() {
   const [contextState, dispatch] = useContext(ContextTeste);
   const [filme, setFilme] = useState([]);
+  const [trailer, setTrailer] = useState([]);
+  const [visible, setVisible] = useState(false);
   const params = useParams();
-  console.log(filme);
+  
 
   useEffect(() => {
     fetch(
@@ -17,11 +19,11 @@ function MoviePage() {
       .then(async (resp) => {
         const response = await resp.json();
         setFilme(response);
+        setTrailer(response.videos.results[0].key);
       })
       .catch((error) => {
         console.log(error);
       });
-
   }, []);
 
   return (
@@ -29,11 +31,16 @@ function MoviePage() {
       <div className=" card  mb-3">
         <div className="row g-0">
           <div className="col-md-4">
-            <img
+          {filme.poster_path ? (
+              <img
               src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
               className="img-fluid rounded-start"
               alt="..."
             />
+          ) : (
+              <div className="card-null-horizontal img-fluid rounded-start"></div>
+              )}
+            
           </div>
           <div className="col-md-8">
             <div className="p-lg-5 card-body">
@@ -45,7 +52,7 @@ function MoviePage() {
                   {filme.vote_average}
                 </small>
               </p>
-              <p className="card-text">
+              <p className="mb-5 card-text">
                 <small className="d-flex text-body-secondary">
                   <BsFillCalendarFill className="h5 text-warning me-2" />
                   {filme.release_date}
@@ -63,13 +70,30 @@ function MoviePage() {
               >
                 {contextState.id.includes(filme.id) ? "Remover" : "Favoritar"}
               </button>
-              <button className="ms-2 btn btn-primary">Trailer</button>
-              
+              <button
+                className="ms-2 btn btn-primary"
+                onClick={() => setVisible(!visible)}
+              >
+                Trailer
+              </button>
             </div>
           </div>
         </div>
+          </div>
+        
+      {visible && (
+        <iframe
+          width="100%"
+          height="600"
+          src={`https://www.youtube.com/embed/${trailer}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      )}
       </div>
-    </div>
+      
   );
 }
 

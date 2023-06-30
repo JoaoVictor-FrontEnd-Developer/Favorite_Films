@@ -5,3 +5,16 @@
 a{
     text-decoration: none
 }
+
+.card-null,.card-null-horizontal{
+    background-color: #b8b8b8;
+}
+
+.card-null{
+    height: 400px;
+}
+
+.card-null-horizontal{
+    height: 100%;
+    
+}

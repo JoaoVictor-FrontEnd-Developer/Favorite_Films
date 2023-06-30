@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import { ContextTeste } from "../context/context";
 import { Link, useNavigate } from "react-router-dom";
-import { PiFilmSlate } from "react-icons/pi";
+import { PiFilmReelFill } from "react-icons/pi";
 import { WiMoonAltThirdQuarter } from "react-icons/wi";
 import { BiSearch } from "react-icons/bi";
 
@@ -35,7 +35,7 @@ function NavBar() {
     <nav className="sticky-top py-3 navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark">
       <div className="container container-fluid">
         <Link to="/" className="navbar-brand">
-          <PiFilmSlate className="h1 my-0" />
+          <PiFilmReelFill className="h1 my-0" />
         </Link>
         <button
           className="navbar-toggler"

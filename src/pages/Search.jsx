@@ -1,15 +1,14 @@
 import React from "react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState} from "react";
 import { useSearchParams } from "react-router-dom";
-import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
 
 function Search() {
-  const [contextState, dispatch] = useContext(ContextTeste);
   const [filmes, setFilmes] = useState([]);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
+  console.log(filmes)
     
 
   useEffect(() => {

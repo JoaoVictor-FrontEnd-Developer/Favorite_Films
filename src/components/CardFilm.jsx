@@ -14,12 +14,16 @@ function CardFilm({ id, title, poster, nota, filme }) {
       
       <div className="card ">
       <Link to={`/moviepage/${id}`}>
+          {poster ? (
               <img
-                src={`https://image.tmdb.org/t/p/w500${poster}`}
-                className="card-img-top"
-                alt="..."
-          />
-      </Link>
+              src={`https://image.tmdb.org/t/p/w500${poster}`}
+              className="card-img-top"
+              alt="..."
+        />
+          ) : (
+              <div className="card-null card-img-top"></div>
+              )}
+          </Link>
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text d-flex align-items-center">
