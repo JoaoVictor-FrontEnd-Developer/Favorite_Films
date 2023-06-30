@@ -11,7 +11,7 @@ function Favorites() {
       {contextState.favorites.length ? (
         <div className="container">
           <h1 className="py-3">Favoritos</h1>
-          <div className="row g-3">
+          <div className="my-2 row g-3">
             {contextState.favorites.map((filme) => (
               <CardFilm
                 key={filme.id}
