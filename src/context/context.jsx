@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 /**
     
@@ -10,10 +10,17 @@ import { createContext, useReducer } from "react";
     
  */
 
-const initialState = {
-    darkMode: false,
-    id: [],
-    favorites: [],
+const initialState = () => {
+    const actualState = localStorage.getItem('savedItems');
+  
+    if (actualState)
+        return JSON.parse(actualState)
+    
+    else return {
+        darkMode: false,
+        id: [],
+        favorites: [],
+    }
 }
 
 
@@ -43,7 +50,7 @@ const contextReducer = (state, action) => {
         case 'CHANGE_THEME':
             return {
                 ...state,
-                darkMode: !state.darkMode,
+                darkMode: !state.darkMode
             }
         default:
             return state
@@ -53,6 +60,8 @@ const contextReducer = (state, action) => {
 export const ContextTeste = createContext();
 
 export const ContextProvider = ({ children }) => {
-    const value = useReducer(contextReducer, initialState)
+
+    
+    const value = useReducer(contextReducer, initialState())
     return <ContextTeste.Provider value={value}>{children}</ContextTeste.Provider>
 }

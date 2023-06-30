@@ -9,8 +9,17 @@ import Footer from './components/Footer';
 import Search from './pages/Search';
 import MoviePage from './pages/MoviePage';
 
+import { useContext, useEffect} from "react";
+import { ContextTeste } from "./context/context";
+
 
 function App() {
+
+  const [contextState] = useContext(ContextTeste)
+
+  useEffect(() => {
+    localStorage.setItem('savedItems', JSON.stringify(contextState))
+  }, [contextState])
 
   return (
 
