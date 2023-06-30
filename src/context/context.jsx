@@ -11,6 +11,7 @@ import { createContext, useReducer } from "react";
  */
 
 const initialState = {
+    darkMode: false,
     id: [],
     favorites: [],
 }
@@ -39,7 +40,11 @@ const contextReducer = (state, action) => {
                     action.payload,
                 ]
             }
-            
+        case 'CHANGE_THEME':
+            return {
+                ...state,
+                darkMode: !state.darkMode,
+            }
         default:
             return state
     }

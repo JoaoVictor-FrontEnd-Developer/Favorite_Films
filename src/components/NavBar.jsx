@@ -1,33 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext, useState } from "react";
 import { ContextTeste } from "../context/context";
 import { Link, useNavigate } from "react-router-dom";
 import { PiFilmSlate } from "react-icons/pi";
+import { WiMoonAltThirdQuarter } from "react-icons/wi";
+import { BiSearch } from "react-icons/bi";
 
 import "./NavBar.css";
 
 function NavBar() {
-
   const [contextState, dispatch] = useContext(ContextTeste);
-  const [search, setSearch] = useState('');
-  const navigate = useNavigate()
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
-    setSearch(e.target.value)
-    
-  }
+    setSearch(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!search) return
-    
-    navigate(`/search?q=${search}`)
-    
-  }
+    if (!search) return;
+
+    navigate(`/search?q=${search}`);
+  };
+
+  useEffect(() => {
+    document
+      .getElementsByTagName("html")[0]
+      .setAttribute("data-bs-theme", contextState.darkMode ? "dark" : "light");
+  }, [contextState.darkMode]);
 
   return (
-    <nav className="sticky-top py-3 navbar navbar-expand-lg bg-light border-bottom border-bottom-dark">
+    <nav className="sticky-top py-3 navbar navbar-expand-lg bg-body-tertiary border-bottom border-bottom-dark">
       <div className="container container-fluid">
         <Link to="/" className="navbar-brand">
           <PiFilmSlate className="h1 my-0" />
@@ -62,7 +67,7 @@ function NavBar() {
           </div>
 
           <div className="offcanvas-body">
-            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <ul className="navbar-nav d-flex justify-content-end align-items-lg-center flex-grow-1 pe-3">
               <li className="nav-item" data-bs-dismiss="offcanvas">
                 <Link to="/" className="nav-link">
                   Início
@@ -76,18 +81,34 @@ function NavBar() {
                   )}
                 </Link>
               </li>
+              <li className="nav-item" data-bs-dismiss="offcanvas">
+                <button
+                  className="nav-link"
+                  onClick={() => dispatch({ type: "CHANGE_THEME" })}
+                >
+                  <WiMoonAltThirdQuarter className="my-0 h4" />
+                </button>
+              </li>
             </ul>
 
-            <form onSubmit={handleSubmit}  className="d-flex mt-lg-0 mt-2" role="search">
+            <form
+              onSubmit={handleSubmit}
+              className="d-flex mt-lg-0 mt-2"
+              role="search"
+            >
               <input
-                className="form-control me-2"
+                className="form-control me-2 rounded-pill"
                 type="search"
                 placeholder="Buscar..."
                 aria-label="Search"
                 onChange={handleInput}
               />
-              <button className="btn btn-outline-primary" data-bs-dismiss="offcanvas" type="submit">
-                Buscar
+              <button
+                className="d-flex justify-content-center align-items-center btn btn-outline-primary rounded-circle"
+                data-bs-dismiss="offcanvas"
+                type="submit"
+              >
+                <BiSearch/>
               </button>
             </form>
           </div>

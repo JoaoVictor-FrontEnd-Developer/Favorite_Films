@@ -10,9 +10,10 @@ import Search from './pages/Search';
 
 
 function App() {
-  
+
   return (
-    <Router>
+
+    <Router >
       <NavBar/>
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -21,6 +22,8 @@ function App() {
       </Routes>
       <Footer/>
       </Router>
+      
+  
   );
 }
 
