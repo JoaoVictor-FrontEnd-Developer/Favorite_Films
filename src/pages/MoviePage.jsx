@@ -10,7 +10,7 @@ function MoviePage() {
   const [trailer, setTrailer] = useState([]);
   const [visible, setVisible] = useState(false);
   const params = useParams();
-  
+  console.log(filme)
 
   useEffect(() => {
     fetch(
@@ -27,14 +27,15 @@ function MoviePage() {
   }, []);
 
   return (
+    
     <div className="my-5 container">
-      <div className=" card  mb-3">
+      <div className="card border-0 mb-3">
         <div className="row g-0">
           <div className="col-md-4">
           {filme.poster_path ? (
               <img
               src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
-              className="img-fluid rounded-start"
+              className="img-fluid rounded"
               alt="..."
             />
           ) : (
