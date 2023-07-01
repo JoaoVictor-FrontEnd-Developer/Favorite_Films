@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-
 import { useParams } from "react-router-dom";
 import CardFilmHorizontal from "../components/CardFilmHorizontal";
 
@@ -32,7 +31,7 @@ function MoviePage() {
   }, []);
 
   return (
-    <div className="my-5 container">
+    <div className="d-flex flex-column align-items-center my-5 container">
       <CardFilmHorizontal
         filme={filme}
         id={filme.id}
@@ -46,16 +45,17 @@ function MoviePage() {
       />
 
       {visible && (
-        <iframe
+      
+          <iframe
+          className="mt-4"
           id="trailer"
-          width="100%"
-          height="600"
           src={`https://www.youtube.com/embed/${trailer}`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
+       
       )}
     </div>
   );
