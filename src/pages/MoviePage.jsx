@@ -41,11 +41,13 @@ function MoviePage() {
         overview={filme.overview}
         vote={filme.vote_average}
         release={filme.release_date}
+        visible={visible}
         onHandleVisible={handleVisible}
       />
 
       {visible && (
         <iframe
+          id="trailer"
           width="100%"
           height="600"
           src={`https://www.youtube.com/embed/${trailer}`}

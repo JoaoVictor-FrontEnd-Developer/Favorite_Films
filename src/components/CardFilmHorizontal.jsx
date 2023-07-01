@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { ContextTeste } from "../context/context";
 import { BsStarFill, BsFillCalendarFill } from "react-icons/bs";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 function CarFilmHorizontal({
   filme,
@@ -11,6 +12,7 @@ function CarFilmHorizontal({
   vote,
   release,
   onHandleVisible,
+  visible,
 }) {
   const [contextState, dispatch] = useContext(ContextTeste);
 
@@ -56,12 +58,14 @@ function CarFilmHorizontal({
             >
               {contextState.id.includes(filme.id) ? "Remover" : "Favoritar"}
             </button>
-            <button
+            <a
               className="ms-2 btn btn-primary"
               onClick={() => onHandleVisible()}
+              href="#trailer"
             >
               Trailer
-            </button>
+              {!visible ? (<MdKeyboardArrowDown className="fs-5" />) : (<MdKeyboardArrowUp className="fs-5" />)}
+            </a>
           </div>
         </div>
       </div>
