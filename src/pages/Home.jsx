@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=87b7a9ceed5e2787d289232560b21c76"
+      "https://api.themoviedb.org/3/movie/popular?api_key=87b7a9ceed5e2787d289232560b21c76"
     )
       .then(async (resp) => {
         const response = await resp.json();
@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <div className="container">
-      <h1 className="py-3">Top Filmes</h1>
+      <h1 className="py-3">Populares</h1>
 
       <div className="my-2 row g-3">
         {filmes.length > 0 ? (
