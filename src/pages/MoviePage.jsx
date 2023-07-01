@@ -11,7 +11,7 @@ function MoviePage() {
   const [trailer, setTrailer] = useState([]);
   const [visible, setVisible] = useState(false);
   const params = useParams();
-  
+  console.log(filme)
 
   const handleVisible = () => {
     setVisible(!visible)
@@ -24,7 +24,7 @@ function MoviePage() {
       .then(async (resp) => {
         const response = await resp.json();
         setFilme(response);
-        setTrailer(response.videos.results[0].key);
+        setTrailer(response.videos.results.filter(video => video.type.includes("Trailer"))[0].key);
       })
       .catch((error) => {
         console.log(error);
