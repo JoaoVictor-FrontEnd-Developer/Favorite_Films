@@ -17,7 +17,7 @@ const initialState = () => {
         return JSON.parse(actualState)
     
     else return {
-        darkMode: false,
+        darkMode: true,
         id: [],
         favorites: [],
     }
