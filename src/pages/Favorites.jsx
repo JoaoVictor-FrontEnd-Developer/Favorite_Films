@@ -4,7 +4,8 @@ import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
 
 function Favorites() {
-  const [contextState] = useContext(ContextTeste);
+  const [contextState] = useContext(ContextTeste); 
+  
   window.scrollTo(0, 0)
   
   return (
@@ -13,7 +14,7 @@ function Favorites() {
         <div className="container">
           <h1 className="py-3">Favoritos</h1>
           <div className="my-2 row g-3">
-            {contextState.favorites.map((filme) => (
+            {contextState.favorites.toReversed().map((filme) => (
               <CardFilm
                 key={filme.id}
                 id={filme.id}

@@ -10,11 +10,34 @@ import "./NavBar.css";
 
 function NavBar() {
   const [contextState, dispatch] = useContext(ContextTeste);
+  const [filterList, setFilterList] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [focus, setFocus] = useState(false);
+  
+  // verificando se o usuário está clicando fora da lista de filtros do input
+  window.addEventListener("click", (e) => {
+    if (e.target.id === "filter-item" || e.target.id === "filter-input") return;
+    else setFocus(false);
+  });
 
   const handleInput = (e) => {
     setSearch(e.target.value);
+
+    getFilmeList(search);
+  };
+
+  const getFilmeList = (search) => {
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=87b7a9ceed5e2787d289232560b21c76&query=${search}`
+    )
+      .then(async (resp) => {
+        const response = await resp.json();
+        setFilterList(response.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleSubmit = (e) => {
@@ -97,20 +120,50 @@ function NavBar() {
               role="search"
             >
               <input
+                id="filter-input"
+                onFocus={() => {
+                  setFocus(true);
+                }}
                 className="form-control me-2 rounded-pill"
                 type="search"
                 placeholder="Buscar..."
                 aria-label="Search"
+                value={search}
                 onChange={handleInput}
               />
+
               <button
-                className="d-flex justify-content-center align-items-center btn btn-outline-primary rounded-circle"
+                className="d-flex justify-content-center 
+                align-items-center btn btn-outline-primary rounded-circle"
                 data-bs-dismiss="offcanvas"
                 type="submit"
               >
-                <BiSearch/>
+                <BiSearch />
               </button>
             </form>
+
+            {search !== "" && filterList.length > 0 && focus && (
+              <div
+                id="filter-search"
+                className={`bg-body-tertiary overflow-y-auto overflow-x-hidden`}
+              >
+                {filterList.map((filme) => (
+                  <div className="container" key={filme.id}>
+                    <p
+                      id="filter-item"
+                      data-bs-dismiss="offcanvas"
+                      onClick={() => {
+                        setSearch(filme.title);
+                        navigate(`/search?q=${filme.title}`);
+                        setFocus(false);
+                      }}
+                    >
+                      {filme.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

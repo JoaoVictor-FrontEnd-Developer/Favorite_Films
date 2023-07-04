@@ -8,7 +8,7 @@ function MoviePage() {
   const [trailer, setTrailer] = useState([]);
   const [visible, setVisible] = useState(false);
   const params = useParams();
-  console.log(filme);
+  
 
   const handleVisible = () => {
     setVisible(!visible);

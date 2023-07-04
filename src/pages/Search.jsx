@@ -5,12 +5,9 @@ import CardFilm from "../components/CardFilm";
 
 function Search() {
   const [filmes, setFilmes] = useState([]);
-
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
-  console.log(filmes)
-    
-
+  
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=87b7a9ceed5e2787d289232560b21c76&query=${query}`
