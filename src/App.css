@@ -13,6 +13,7 @@ a{
     opacity: 0.8;
     transition: 0.3s;
     z-index: 1;
+    font-size: 50px;
 }
 .back-top:hover{
     opacity: 1

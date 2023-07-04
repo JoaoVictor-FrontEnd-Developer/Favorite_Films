@@ -20,7 +20,7 @@ function ButtonBackToTop() {
     window.addEventListener('scroll', toggleVisible)
   return (
       <>
-      {visible ? (<BsFillArrowUpCircleFill className="fs-1 back-top" onClick={handleBackTop}/>) : (<></>)}
+      {visible ? (<BsFillArrowUpCircleFill className="back-top" onClick={handleBackTop}/>) : (<></>)}
       </>
   )
 }
