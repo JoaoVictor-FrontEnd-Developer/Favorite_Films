@@ -23,7 +23,7 @@ function NavBar() {
 
   const handleInput = (e) => {
     setSearch(e.target.value);
-
+    setFocus(true)
     getFilmeList(search);
   };
 
