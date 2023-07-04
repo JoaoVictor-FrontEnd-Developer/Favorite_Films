@@ -11,6 +11,7 @@ import MoviePage from './pages/MoviePage';
 
 import { useContext, useEffect} from "react";
 import { ContextTeste } from "./context/context";
+import ButtonBackToTop from './components/ButtonBackToTop';
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
   return (
 
     <Router >
-      <NavBar/>
+      <NavBar />
+      <ButtonBackToTop/>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/favorites" element={<Favorites />}/>

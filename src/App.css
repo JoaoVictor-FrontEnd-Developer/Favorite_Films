@@ -3,6 +3,20 @@ a{
     text-decoration: none
 }
 
+/* btn back to top */
+.back-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+    z-index: 1;
+}
+.back-top:hover{
+    opacity: 1
+}
+
 /* Cards */
 .card-body{
     min-height: 180px;

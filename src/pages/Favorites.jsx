@@ -5,7 +5,8 @@ import CardFilm from "../components/CardFilm";
 
 function Favorites() {
   const [contextState] = useContext(ContextTeste);
-
+  window.scrollTo(0, 0)
+  
   return (
     <>
       {contextState.favorites.length ? (
