@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
@@ -6,7 +6,9 @@ import CardFilm from "../components/CardFilm";
 function Favorites() {
   const [contextState] = useContext(ContextTeste); 
   
-  window.scrollTo(0, 0)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
     <>
