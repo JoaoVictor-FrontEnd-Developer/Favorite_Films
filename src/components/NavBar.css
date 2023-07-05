@@ -39,17 +39,30 @@
 }
 #filter-search p{
     padding: 5px 0px;
-    padding: 10px 0;
     cursor: pointer;
+    opacity: 0.8;
 }
 
 #filter-search p:hover{
-   opacity: 0.8;
+   opacity: 1;
+   
 }
 
-#filter-search::-webkit-scrollbar{
-    display: none;
-}
+
+#filter-search::-webkit-scrollbar {
+    width: 12px;              
+  }
+  
+
+#filter-search::-webkit-scrollbar-track {
+    background: rgba(255, 166, 0, 0);        /* color of the tracking area */
+  }
+  
+
+#filter-search::-webkit-scrollbar-thumb {
+    background-color: rgb(143, 143, 143);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
+  }
 
 @media screen and (max-width: 990px){
 

@@ -158,8 +158,9 @@ function NavBar() {
                         setFocus(false);
                       }}
                     >
-                      {filme.title}
+                      <BiSearch /> {filme.title}
                     </p>
+                    <hr></hr>
                   </div>
                 ))}
               </div>
