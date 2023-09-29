@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ContextTeste } from "../context/context";
 import CardFilm from "../components/CardFilm";
 
 function Favorites() {
   const [contextState] = useContext(ContextTeste); 
+  
   
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -16,7 +17,7 @@ function Favorites() {
         <div className="container">
           <h1 className="py-3">Favoritos</h1>
           <div className="my-2 row g-3">
-            {contextState.favorites.toReversed().map((filme) => (
+            {contextState.favorites.slice(0).reverse().map((filme) => (
               <CardFilm
                 key={filme.id}
                 id={filme.id}
